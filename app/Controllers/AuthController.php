@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\View;
 use App\Models\User;
+use PDO;
 
 class AuthController
 {
@@ -54,5 +55,59 @@ class AuthController
             // Registration failed
             echo "Failed to register user.";
         }
+    }
+
+
+
+    public function loginStore()
+    {
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+
+        if (!isset($phone) || !isset($password)) {
+            echo "All fields are required.";
+            return;
+        }
+
+
+        $database = new \App\Config\Database();
+        $db = $database->getConnection();
+
+        
+
+
+
+        $user = new User();
+        
+        // Find user by phone
+        $query = "SELECT * FROM users WHERE phone = :phone LIMIT 0,1";
+        $stmt = $database->conn->prepare($query);
+        $stmt->bindParam(":phone", $phone);
+        $stmt->execute();
+        $num = $stmt->rowCount();   
+
+        if($num > 0){
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verify password
+            if(password_verify($password, $row['password'])){
+                // Password is correct, start a session
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['user_name'] = $row['name'];
+                $_SESSION['user_phone'] = $row['phone'];
+
+                // Redirect to home or dashboard
+                header("Location: /dashboard");
+                exit();
+            } else {
+                echo "Invalid password.";
+            }
+        } else {
+            echo "No user found with that phone number.";
+        }
+
+
+
     }
 }
