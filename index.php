@@ -12,7 +12,9 @@ $router = new Router();
 
 $router->get('/', [new HomeController(), 'index']);
 $router->get('/login', [new AuthController(), 'login']);
+
 $router->get('/register', [new AuthController(), 'register']);
+$router->post('/register', [new AuthController(), 'registerStore']);
 
 
 

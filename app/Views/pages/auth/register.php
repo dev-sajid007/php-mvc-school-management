@@ -20,12 +20,11 @@
                         <!-- Phone -->
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel"
+                            <input type="phone"
                                 class="form-control"
                                 id="phone"
                                 name="phone"
                                 placeholder="e.g. 017XXXXXXXX"
-                                pattern="[0-9]{11}"
                                 required>
                             <div class="form-text">Must be 11 digits.</div>
                         </div>
@@ -68,6 +67,10 @@
     </div>
 </div>
 
+
+
+
+
 <script>
     
     const regForm = document.getElementById("registerForm");
@@ -85,8 +88,7 @@
 
 
         const phone = document.getElementById("phone").value;
-        const phonePattern = /^[0-9]{11}$/;
-        if (!phonePattern.test(phone)) {
+        if (phone.length < 11) {
             e.preventDefault();
             alert("Phone number must be exactly 11 digits.");
             return;
