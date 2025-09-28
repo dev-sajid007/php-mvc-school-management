@@ -12,28 +12,20 @@ use App\Controllers\StudentController;
 
 $router = new Router();
 
+//home routes
+include 'routes/home.php';
 
-$router->get('/', [new HomeController(), 'index']);
 
 //auth routes
-
-$router->get('/login', [new AuthController(), 'login']);
-$router->post('/login', [new AuthController(), 'loginStore']);
-
-$router->get('/register', [new AuthController(), 'register']);
-$router->post('/register', [new AuthController(), 'registerStore']);
-
-$router->get('/logout', [new AuthController(), 'logout']);
-
+include 'routes/auth.php';
 
 
 //dasboard route
-$router->get('/dashboard', [new HomeController(), 'dashboard']);
+include 'routes/admin.php';
 
 
 
-$router->get('/about', [new HomeController(), 'about']);
-$router->get('/students', [new StudentController(), 'list']);
+
 
 
 

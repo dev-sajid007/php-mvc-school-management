@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core;
 
 class Router
@@ -13,6 +14,11 @@ class Router
     public function post(string $path, callable $callback)
     {
         $this->routes['POST'][$this->normalize($path)] = $callback;
+    }
+
+    public function destroy(string $path, callable $callback)
+    {
+        $this->routes['DELETE'][$this->normalize($path)] = $callback;
     }
 
     public function dispatch(string $method, string $uri)

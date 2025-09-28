@@ -4,7 +4,7 @@
 namespace App\Models;
 
 use App\Config\Database;
-use PDO;    
+use PDO;
 
 class User
 {
@@ -42,8 +42,7 @@ class User
 
         if ($stmt->execute()) {
             return true;
-        }
-        else{
+        } else {
             echo "\nPDO::errorInfo():\n";
             print_r($stmt->errorInfo());
         }
@@ -53,5 +52,33 @@ class User
 
 
 
-    
+    public function getAll(){
+        $query = "SELECT id, name, phone, status FROM " . $this->table_name . " ORDER BY id DESC";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        
+        // sanitize
+        $id = htmlspecialchars(strip_tags($id));
+
+        // bind value
+        $stmt->bindParam(":id", $id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
 }
