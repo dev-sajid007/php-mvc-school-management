@@ -1,0 +1,53 @@
+<div class="container py-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4">Login With Account</h3>
+
+                    <form action="/register" method="POST">
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel"
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                placeholder="e.g. 017XXXXXXXX"
+                                pattern="[0-9]{11}"
+                                required>
+                            <div class="form-text">Must be 11 digits.</div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                minlength="6"
+                                required>
+                        </div>
+
+
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
+
+                        <p class="text-center mt-3 mb-0">
+                            Don't have an account?
+                            <a href="/register" class="text-decoration-none">Register</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("Login Page");
+</script>

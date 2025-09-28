@@ -1,0 +1,15 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Change this if your project is in a subfolder
+# For example, if your site runs from http://example.com/school/
+# RewriteBase /school/
+RewriteBase 
+
+# If the request is NOT a real file or directory,
+# redirect everything to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+
