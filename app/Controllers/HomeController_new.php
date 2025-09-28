@@ -20,11 +20,13 @@ class HomeController
     public function dashboard()
     {
         // Check if user is logged in
-        if (!isset($_SESSION['user_id'])) {
-            // Redirect to login page if not logged in
-            header('Location: /login');
-            exit();
-        }
+        // if (!isset($_SESSION['user_id'])) {
+        //     // Redirect to login page if not logged in
+        //     header('Location: /login');
+        //     exit();
+        // }
+
+     
 
         return View::render('admin/dashboard', ['title' => 'Dashboard'], 'admin-main');
     }
