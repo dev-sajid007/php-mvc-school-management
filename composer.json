@@ -1,0 +1,12 @@
+{
+    "name": "dev_sajid/mvc-school",
+    "description": "MVC School Management System",
+    "type": "project",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

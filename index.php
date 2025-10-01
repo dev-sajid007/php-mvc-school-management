@@ -3,12 +3,16 @@
 // Start session for flash messages and user authentication
 session_start();
 
-require_once 'autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
-use App\Controllers\AuthController;
+// Temporary manual include until autoloader is fixed
+require_once __DIR__ . '/app/Core/Router.php';
+
 use App\Core\Router;
-use App\Controllers\HomeController;
-use App\Controllers\StudentController;
+
+
+
+
 
 $router = new Router();
 
